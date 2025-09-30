@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Family&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <style>
+        body{
+            margin:0px;
+            overflow-x: hidden;
+        }
+        
+        .startervisible img:hover,.apetizersvisible img:hover,.drinksvisible img:hover{
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+         .head1{
+        font-family:'Rock Salt', 'Times New Roman', Times, serif;
+        padding-left: 220px;
+        font-size: 50px;
+        color: gray;
+        }
+        .menu{
+            font-family:'Rock Salt', 'Times New Roman', Times, serif;
+            display: flex;
+            gap: 100px;
+            padding-top: 50px;
+            padding-left: 5px;
+            margin-bottom: 100px;
+            /* height: 800px; */
+            /* flex-direction: column; */
+        }
+        .starters,.apetizers,.drinks{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .starterinvisible,.apetizersinvisible,.drinksinvisible{
+            position: fixed;
+            display: none;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close,.closeb ,.closed{
+      position: absolute;
+      top: 10px; right: 15px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    .previous, .next ,.nexta,.previousa,.nextd,.previousd{
+      cursor: pointer;
+      font-size: 24px;
+      margin: 0 20px;
+      user-select: none;
+    }
+
+        .modeltext ,.apetizersmodeltext,.drinksodeltext{
+            position: relative;
+      width: 90vh;
+      background: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+        }
+
+        .starters img,.apetizers img,.drinks img{
+            height: 430px;
+            width: 330px;
+        }
+
+        .dish,.disha,.dishb{display: none;}
+        .dish.active{display: block;}
+        .disha.active{display: block;}
+        .dishb.active{display: block;}
+
+
+        .navbar{
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: flex-end;
+            height: 40px;
+            gap: 50px;
+            padding-top: 20px;
+            padding-right: 60px;
+            background:  linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+            /* position: fixed; */
+        
+        }
+        .hamburger{
+            display: none;
+            flex-direction:column ;
+            margin-right: auto;
+            gap: 2px;
+            padding-top: 6px;
+            padding-left: 5px;
+        }
+        .ham{
+            width: 45px;
+            height: 6px;
+            border-radius: 20px;
+            color: black;
+            background-color: white;
+            /* color: #f97316; */
+        }
+        .herosection{
+            /* position: absolute; */
+        }
+        .navsection{
+            height: 40px;
+            background-color: rgba(0,0,0,0.7);
+        }
+        a{
+            color: white;
+            font-size: 25px;
+            text-decoration: none;
+        }
+
+        a:hover{
+            color: #f97316;
+        }
+        a:active{
+            color: #f97316;
+            text-decoration: dotted;
+        }
+
+        main h1{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .contact{
+            display: flex;
+            /* flex-direction: column; */
+            background-color: gray;
+            height: 300px;
+            border-top: 2px solid black;
+        }
+        .left{
+            width: 50%;
+            border-right: 2px solid black;
+            padding-left: 10px;
+        }
+        .right{
+            padding-left: 10px;
+        }
+        .contact h1{
+            font-size: 50px;
+        }
+
+        footer{
+            display: flex;
+            justify-content: center;
+            color: black;
+            font-weight: bolder;
+        }
+
+
+
+        @media only screen and (max-width:900px){
+            .menu{
+                display: block;
+            }
+
+             .starters img,.apetizers img,.drinks img{
+            height: 550px;
+            width: 550px;
+        }
+        main{
+            font-size: 30px;
+        }
+
+        .hamburger{
+            display: flex;
+            /* flex-direction: column; */
+            /* margin-right: auto; */
+        }
+        .navbar{
+            height: 0px;
+            flex-direction: column;
+            opacity: 0;
+            padding-left: 10px;
+            background-color: black;
+            transition: height 0.3s ease-in-out;
+            pointer-events: none;
+            /* font-color: #f97316; */
+        }
+        .navbar.show{
+            opacity: 1;
+            height: 500px;
+            pointer-events: auto;
+        }
+        }
+
+    </style>
+</head>
+<body>
+    
+        <section class="herosection">
+        <header>
+            <section class="navsection">
+            <section class="hamburger" id="hamid">
+                <div class="ham"></div>
+                <div class="ham"></div>
+                <div class="ham"></div>
+            </section>
+
+        </section>
+        <nav class="navbar" id="navbarid">
+            <a href="main.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="about.html">About</a>
+            <a href="">Order Now</div>
+            <a href="">Location</a>
+            <a href="gallery.html">Gallery</a>
+
+        </nav>
+    </header>
+
+            <!-- <img src="WhatsApp Image 2025-09-19 at 8.59.44 PM.jpeg" alt=""> -->
+        </section>
+
+        <main class="main">
+            <h1 class="head1">OUR MENU INCLUDE :</h1>
+            <section class="menu">
+        <section class="starters">
+            <section class="startervisible" id="startervisibleid" >
+                <img src="eggs.jpeg" alt="">
+            </section>
+            <h2>Starters</h2>
+
+            
+            <section class="starterinvisible" id="starterinvisibleid">
+                <section class="modeltext">
+
+                    <span class="close" id="closeid">&times;</span>
+                <div class="dish"><img src="creamy soup.jpg" alt=""><p>Creamy soup</p><h3>Price:$8.00</h3></div>
+                <div class="dish"><img src="veg soup.jpg" alt=""><p>Vegetable soup</p><h3>Price:$8.79</h3></div>
+                <div class="dish"><img src="potato puffs.jpg" alt=""><p>Kebabs</p><h3>Price:$10.00</h3></div>
+
+            <div>
+                <button class="next" id="nextid">&gt;</button>
+                <button class="previous" id="previousid">&lt;</button>
+            </div>
+
+            </section>
+            </section>
+            </section>
+
+
+
+            <section class="apetizers">
+                <section class="apetizersvisible" id="apetizersvisibleid">
+                    
+                    <img src="desi.jpeg" alt="">
+                </section>
+                    <h2>Main Course</h2>
+                <section class="apetizersinvisible" id="apetizersinvisibleid">
+                    <section class="apetizersmodeltext">
+                        <span class="closeb" id="closebid">&times;</span>
+
+                    <div class="disha"><img src="Beef kebabs.jpg" alt=""><p>Beef kebabs</p><h3>Price:$15</h3></div>
+                <div class="disha"><img src="karahi.jpg" alt=""><p>Chicken Karahi</p><h3>Price:$20</h3></div>
+                <div class="disha"><img src="broast.jpg" alt=""><p>Chicken Broast</p><h3>Price:$20</Price:120></h3></div>
+
+            <div>
+                <button class="nexta" id="nextaid">&gt;</button>
+                <button class="previousa" id="previousaid">&lt;</button>
+            </div>
+            </section>
+                    </section>
+            </section>
+
+
+            <section class="drinks">
+                <section class="drinksvisible" id="drinksvisibleid">
+                    <img src="dessert.jpeg" alt="">
+                </section>
+                    <h2>Drinks</h2>
+                <section class="drinksinvisible" id="drinksinvisibleid">
+                    <section class="drinksmodeltext">
+                         <span class="closed" id="closedid">&times;</span>
+
+                    <!-- <div class="disha"><img src="karahi.jpg" alt=""><p>Chicken Karahi</p><h3>Price:$20</h3></div> -->
+                    <div class="dishb"><img src="slush.jpg" alt="Slushes"><p>Slushes</p><h3>Price:$10</h3></div>
+                    <div class="dishb"><img src="" alt=""><p></p><h3>Price:$10</h3></div>
+                    <div class="dishb"><img src="" alt=""><p></p><h3>Price:$10</h3></div>
+                    <div class="dishb"><img src="" alt=""><p></p><h3>Price:$10</h3></div>
+                             <div>
+                <button class="nextd" id="nextdid">&gt;</button>
+                <button class="previousd" id="previousdid">&lt;</button>
+            </div>
+                </section>
+            </section>
+
+
+        </section>
+
+        
+    </section>
+    <section class="contact">
+   <div class="left">
+       <h1>Contact us</h1>
+       <p>Phone number </p>
+       <p>Email</p>
+   </div>
+
+   <div class="right">
+       <h1>Follow us</h1>
+       <a href="www.instagram.com">    <i>insta</i></a>
+   </div>
+
+</main>
+<footer>umama</footer>
+</body>
+    <script>
+function setupCarousel(visibleId, invisibleId, closeId, dishClass, nextId, prevId) {
+    let index = 0;
+    const invisible = document.getElementById(invisibleId);
+    const visible = document.getElementById(visibleId);
+    const closeBtn = document.getElementById(closeId);
+    const dishes = document.querySelectorAll("." + dishClass);
+
+    // open modal
+    visible.onclick = () => invisible.style.display = "flex";
+
+    // close modal
+    closeBtn.onclick = () => invisible.style.display = "none";
+
+    // show specific dish
+    function showDish(i) {
+        dishes.forEach(d => d.classList.remove("active"));
+        dishes[i].classList.add("active");
+    }
+    showDish(index);
+
+    // next
+    document.getElementById(nextId).onclick = () => {
+        index = (index + 1) % dishes.length;
+        showDish(index);
+    };
+
+    // previous
+    document.getElementById(prevId).onclick = () => {
+        index = (index - 1 + dishes.length) % dishes.length
+        showDish(index);
+    };
+}
+
+
+setupCarousel("startervisibleid", "starterinvisibleid", "closeid", "dish", "nextid", "previousid");
+
+setupCarousel("apetizersvisibleid", "apetizersinvisibleid", "closebid", "disha", "nextaid", "previousaid");
+
+
+setupCarousel("drinksvisibleid","drinksinvisibleid","closedid","dishb","nextdid","previousdid")
+
+
+
+let hamb=document.getElementById("hamid")
+let navbar=document.getElementById("navbarid")
+hamb.addEventListener("click",()=>{
+    navbar.classList.toggle("show")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // let index=0
+        // let dishes=document.querySelectorAll(".dish")
+        // let invisible=document.getElementById("starterinvisibleid")
+        // let visiblestarter=document.getElementById("startervisibleid")
+        // let instarter=document.querySelectorAll(".starterinvisibles")
+        // let closebtn=document.getElementById("closeid")
+        // visiblestarter.onclick=()=>invisible.style.display="flex"
+        // closebtn.onclick=()=>invisible.style.display="none"
+
+        // function showdish(di,index) {
+        //     di.forEach(d=>d.classList.remove("active"))
+        //     di[index].classList.add("active")
+        // }
+        
+        // showdish(dishes,index)
+        // function showdish(index) {
+        //     dishes.forEach(d=>d.classList.remove("active"))
+        //     dishes[index].classList.add("active")
+        // }
+        
+        // document.getElementById("nextid").onclick=()=>{
+        //     index=(index+1)%dishes.length
+        //     showdish(index)
+        // }
+        
+        // document.getElementById("previousid").onclick = () => {
+        //     index = (index - 1 + dishes.length) % dishes.length;
+        //     showdish(index);
+        // };
+
+
+        // let invisibleapetizer=document.getElementById("apetizersinvisibleid")
+        // let visibleapetizer=document.getElementById("apetizersvisibleid")
+        // let closeb=document.getElementById("closebid")
+        // let dishes2=document.querySelectorAll(".disha")
+        // visibleapetizer.onclick=()=>{invisibleapetizer.style.display="flex"}
+
+        // closeb.onclick=()=>{invisibleapetizer.style.display="none"}
+        // closeb.onclick=()=>{alert("hello")}
+
+        // function showDish(index) {
+        //     dishes2.forEach(d=>d.classList.remove("active"))
+        //     dishes2[index].classList.add("active")
+        // }
+        // showdish(dishes2,index)
+        
+        // document.getElementById("nextaid").onclick=()=>{
+        //     index=(index+1)%dishes2.length
+        //     showDish(index)
+        // }
+        
+        // document.getElementById("previousaid").onclick = () => {
+        //     index = (index - 1 + dishes2.length) % dishes2.length;
+        //     showDish(index);
+        // };
+
+
+      
+        </script>
+</html>
