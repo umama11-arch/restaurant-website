@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resturaunt|Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Family&display=swap" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
     <style>
         body{
+            font-family:'Poppins' ,'Lora', 'Arial Narrow', Arial, sans-serif;
             min-width: 100vh;
             /* width: fit-content; */
             margin:0px;
@@ -27,8 +28,9 @@
         }
         .menu{
             font-family:'Rock Salt', 'Times New Roman', Times, serif;
-            display: flex;
-            gap: 100px;
+            display: grid;
+            grid-template-columns: repeat(3,33%);
+            /* gap: 100px; */
             padding-top: 50px;
             padding-left: 5px;
             margin-bottom: 100px;
@@ -67,6 +69,7 @@
 
         .modeltext ,.apetizersmodeltext,.drinksmodeltext{
             position: relative;
+            /* height: 90%; */
       width: 90vh;
       background: #fff;
       padding: 20px;
@@ -76,7 +79,8 @@
 
         .starters img,.apetizers img,.drinks img{
             height: 430px;
-            width: 330px;
+            /* width: 330px; */
+            width: 90%;
         }
 
         .dish,.disha,.dishb{display: none;}
@@ -206,7 +210,7 @@
             }
             .head1{
                 padding-left: 5px;
-                font-size: 50px;
+                font-size: 40px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -359,17 +363,17 @@
     <section class="contact">
    <div class="left">
        <h1>Contact us</h1>
-       <p>Phone number </p>
-       <p>Email</p>
+       <p>Mon_Fri : 8:00am - 10:00pm </p>
+       <p>Email : umamaishaq@gmail.com</p>
    </div>
 
    <div class="right">
        <h1>Follow us</h1>
-       <a href="www.instagram.com">    <i>insta</i></a>
+       <!-- <a href="www.instagram.com">    <i>insta</i></a> -->
    </div>
 
 </main>
-<footer>umama</footer>
+<footer>umama@copyright2025</footer>
 </body>
     <script>
 function setupCarousel(visibleId, invisibleId, closeId, dishClass, nextId, prevId) {
