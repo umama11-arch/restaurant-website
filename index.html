@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resturaunt |Main</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Dancing+Family&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
@@ -27,6 +27,7 @@
             background-attachment: fixed;
             background-position: center;
             height: 600px;
+            object-fit: cover;
             /* height: 90%; */
             /* height: 80%; */
             
@@ -297,7 +298,7 @@
     <main class="herosection">
         <h1 class="heading1">We are ready to get your order</h1>
         <p class="heropara">Here offers a GREAT taste</p>
-        <button class="cta">Menu</button>
+        <button class="cta" id="ctaid">Menu</button>
     </main>
     </section>
 
@@ -338,5 +339,11 @@
         nav.classList.toggle("show")
       
     })
+
+
+    let button=document.getElementById("ctaid")
+    button.addEventListener("click",()=>{
+        window.location.href="menu.html"
+            })
 </script>
 </html>
