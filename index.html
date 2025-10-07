@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resturaunt |Main</title>
+
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="description" content="Welcome to our restaurant – serving fresh and delicious meals with love.">
+    <meta name="keywords" content="restaurant, food, dinner, menu, best food">
+
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Dancing+Family&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        body{
+        body {
             min-width: 100vh;
             min-height: 100vh;
-            overflow-x: hidden; 
+            overflow-x: hidden;
             margin: 0px;
-            font-family:'Poppins' ,'Lora','Dancing Family', 'Arial Narrow', Arial, sans-serif;
+            font-family: 'Poppins', 'Lora', 'Dancing Family', 'Arial Narrow', Arial, sans-serif;
         }
-        
-        .herosections{
+
+        .herosections {
             background:
-            linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-             url("WhatsApp Image 2025-09-19 at 8.59.42 PM.jpeg");
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url("WhatsApp Image 2025-09-19 at 8.59.42 PM.jpeg");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             height: 600px;
             object-fit: cover;
-            /* height: 90%; */
-            /* height: 80%; */
-            
+
         }
-        .navbar{
+
+        .navbar {
             display: flex;
             /* flex-direction: column; */
             justify-content: flex-end;
@@ -41,25 +47,28 @@
             padding-right: 60px;
             /* position: fixed; */
         }
-        .navsection{
+
+        .navsection {
             height: 40px;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0, 0, 0, 0.7);
         }
-        a{
+
+        a {
             color: white;
             font-size: 25px;
             text-decoration: none;
         }
 
-        a:hover{
+        a:hover {
             color: #f97316;
         }
-        a:active{
+
+        a:active {
             color: #f97316;
             text-decoration: dotted;
         }
 
-        main{
+        main {
             display: block;
             text-align: center;
             /* flex-direction: column; */
@@ -68,16 +77,18 @@
             color: white;
             margin-top: 120px;
         }
-        .heading1{
+
+        .heading1 {
             font-size: 80px;
             /* margin: 0px; */
         }
-        .heropara{
+
+        .heropara {
             /* padding: 0px; */
             font-size: 40px;
         }
-        
-        .cta{
+
+        .cta {
             /* padding: 20px; */
             width: 180px;
             height: 60px;
@@ -88,40 +99,49 @@
             font-size: 30px;
             /* color: transparent; */
         }
-        .cta:hover{
+
+        .cta:hover {
             color: #f97316;
+            background-color: wheat;
         }
-        .specials{
+
+        .specials {
             /* height: 500px; */
+            padding-top: 100px;
             margin: 20px;
             text-align: center;
         }
 
-        .specialdishes{
+        .specialdishes {
             display: grid;
             justify-content: center;
-            grid-template-columns: repeat(3,370px);
-            grid-template-rows: repeat(2,470px);
+            grid-template-columns: repeat(3, 370px);
+            grid-template-rows: repeat(2, 470px);
         }
-        .specialdishes img{
+
+        .specialdishes img {
             /* grid-column: 1; */
             /* grid-row: 1; */
-            width:330px;
+            width: 330px;
             height: 370px;
         }
-        .dish2{
+
+        .dish2 {
             grid-column: 1;
             grid-row: 2;
         }
 
-        .specialh1{
+        .specialh1 {
             font-size: 80px;
         }
-        .specialdishes p{
+
+        .specialdishes p {
             font-size: 20px;
             font-weight: bolder;
         }
-        .contact{
+
+        .contact {
+            margin-top: 100px;
             display: flex;
             flex-direction: column;
             background-color: black;
@@ -129,24 +149,28 @@
             border-top: 2px solid black;
             align-items: center;
         }
-         .left{
+
+        .left {
 
             height: 50%;
-            
+
         }
-        .right{
+
+        .right {
             height: 50%;
-        } 
-        .contact h1{
+        }
+
+        .contact h1 {
             color: #f97316;
             font-size: 40px;
         }
-        .contact p{
+
+        .contact p {
             color: white;
             font-size: 20px;
         }
 
-        footer{
+        footer {
             display: flex;
             justify-content: center;
             color: white;
@@ -154,13 +178,14 @@
             font-weight: bolder;
         }
 
-        .hamburger{
+        .hamburger {
             margin-right: auto;
             display: flex;
             flex-direction: column;
             gap: 2px;
             display: none;
         }
+
         .ham {
 
             width: 50px;
@@ -170,109 +195,135 @@
             /* margin-left: auto; */
         }
 
-        @media only screen  and (max-width:1106px){
-            .specialdishes{
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        @media only screen and (max-width:1106px) {
+            .specialdishes {
                 /* display: block; */
                 justify-content: center;
-                grid-template-columns: repeat(2,50%);
-                grid-template-rows: repeat(3,520px);
+                grid-template-columns: repeat(2, 50%);
+                grid-template-rows: repeat(3, 520px);
             }
-            .specialdishes img{
+
+            .specialdishes img {
                 /* width: 500px; */
                 width: 90%;
                 height: 80%;
             }
 
-            .specialdishes p{
-            font-size: 30px;
-            font-weight: bolder;
-        }
+            .specialdishes p {
+                font-size: 30px;
+                font-weight: bolder;
+            }
         }
 
-         @media only screen  and (max-width:1145px){
-            .heading1{
+        @media only screen and (max-width:1145px) {
+            .heading1 {
                 font-size: 70px;
             }
-         }
+        }
 
-          @media only screen  and (max-width:1010px){
-            .heading1{
+        @media only screen and (max-width:1010px) {
+            .heading1 {
                 font-size: 60px;
             }
-          }
+        }
 
 
-            @media only screen  and (max-width:500px){
-                body{
-                    overflow-x: hidden;
-                }
-                .ham{
-                    width: 140px;
-                    height: 20px;
-                }
-                .cta{
-                    height: 185px;
-                    width: 400px;
-                    border-radius: 100px;
-                    font-size: 80px;
-                    border: 8px solid white;
-                }
-                .heading1{
-                    font-size: 100px;
-                }
-                .heropara{
-                    font-size: 60px;
-                }
-                .herosections{
-                    height: 1000px;
-                }
-                .specialdishes{
-                    display: block;
-                }
-                .specialdishes img{
-                    height: 700px;
-                }
-                .specialdishes p{
-                    font-size: 80px;
-                }
-                .contact p{
-                    font-size: 30px;
-                }
+        @media only screen and (max-width:500px) {
+            body {
+                overflow-x: hidden;
             }
-           @media only screen  and (max-width:850px){
-            .hamburger{
+
+            .ham {
+                width: 100px;
+                height: 13px;
+            }
+
+            .cta {
+                height: 185px;
+                width: 400px;
+                border-radius: 100px;
+                font-size: 80px;
+                border: 8px solid white;
+            }
+
+            .heading1 {
+                font-size: 80px;
+            }
+
+            .heropara {
+                font-size: 60px;
+            }
+
+            .herosections {
+                height: 1000px;
+            }
+
+            .specialdishes {
+                display: block;
+            }
+
+            .specialdishes img {
+                height: 700px;
+            }
+
+            .specialdishes p {
+                font-size: 80px;
+            }
+
+            .contact p {
+                font-size: 30px;
+            }
+        }
+
+        @media only screen and (max-width:850px) {
+            .hamburger {
                 display: flex;
                 flex-direction: column;
                 gap: 2px;
                 padding-top: 20px;
                 padding-left: 10px;
             }
-            .navsection{
+
+            .navsection {
                 display: none;
             }
 
-            header{
+            header {
                 height: 0px;
             }
-            .navbar{
+
+            .navbar {
                 flex-direction: column;
                 height: 0px;
                 padding-left: 10px;
                 overflow: hidden;
                 opacity: 0;
+                /* background-color: black; */
                 transition: height 2s ease-in-out;
                 pointer-events: none;
             }
-            .navbar.show{
+            
+            .navbar.show {
+                /* font-size: 40px; */
                 height: 500px;
                 opacity: 1;
                 pointer-events: auto;
             }
-
-           }
-
+            .navbar a{
+                font-size: 40px;
+                font-weight: bolder;
+                color: #f97316;
+            }
+        }
     </style>
 </head>
+
 <body>
     <section class="herosections">
         <header>
@@ -281,37 +332,47 @@
                 <div class="ham 2"></div>
                 <div class="ham 3"></div>
             </div>
-            
+
             <section class="navsection">
 
-        </section>
-        <nav class="navbar" id="navbarid">
-            <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="about.html">About</a>
-            <!-- <a href="">Order Now</div> -->
+            </section>
+            <nav class="navbar" id="navbarid">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About</a>
+                <!-- <a href="">Order Now</div> -->
                 <a href="">Location</a>
                 <a href="gallery.html">Gallery</a>
-                
+
             </nav>
-    </header>
-    <main class="herosection">
-        <h1 class="heading1">We are ready to get your order</h1>
-        <p class="heropara">Here offers a GREAT taste</p>
-        <button class="cta" id="ctaid">Menu</button>
-    </main>
+        </header>
+        <main class="herosection">
+            <h1 class="heading1">We are ready to get your order</h1>
+            <p class="heropara">Here offers a GREAT taste</p>
+            <button class="cta" id="ctaid">Menu</button>
+        </main>
     </section>
 
     <section class="specials">
         <h1 class="specialh1">OUR SPECIALITIES</h1>
 
-    <section class="specialdishes">
-        <div class="dish1"><img  src="WhatsApp Image 2025-09-19 at 8.59.44 PM.jpeg" alt="image 1"><p>Pizzas</p></div>
-        <div class="dish2"><img src="eggs.jpeg" alt="image 2"><p>Eggs</p></div>
-        <div class="dish3"><img src="dessert.jpeg" alt="image 3"><p>Desserts</p></div>
-        <div class="dish4"><img src="desi.jpeg" alt="image 4"><p>Desi Food</p></div>
-        <div class="dish5"><img src="salads.jpeg" alt="image 5"><p>Salads</p> </div>
-    </section>
+        <section class="specialdishes">
+            <div class="dish1"><img src="WhatsApp Image 2025-09-19 at 8.59.44 PM.jpeg" alt="image 1">
+                <p>Pizzas</p>
+            </div>
+            <div class="dish2"><img src="eggs.jpeg" alt="image 2">
+                <p>Eggs</p>
+            </div>
+            <div class="dish3"><img src="dessert.jpeg" alt="image 3">
+                <p>Desserts</p>
+            </div>
+            <div class="dish4"><img src="desi.jpeg" alt="image 4">
+                <p>Desi Food</p>
+            </div>
+            <div class="dish5"><img src="salads.jpeg" alt="image 5">
+                <p>Salads</p>
+            </div>
+        </section>
     </section>
 
     <section class="contact">
@@ -329,21 +390,36 @@
 
     <footer>umama@copyright2025</footer>
 </body>
-    
-    <script>
+
+<script>
 
 
-    let ham=document.getElementById("hamburgerid")
-    let nav=document.getElementById("navbarid")
-    ham.addEventListener("click",()=>{
+    let ham = document.getElementById("hamburgerid")
+    let nav = document.getElementById("navbarid")
+    ham.addEventListener("click", () => {
         nav.classList.toggle("show")
-      
+
     })
 
 
-    let button=document.getElementById("ctaid")
-    button.addEventListener("click",()=>{
-        window.location.href="menu.html"
-            })
+    let button = document.getElementById("ctaid")
+    button.addEventListener("click", () => {
+        window.location.href = "menu.html"
+    })
+
+
+
+
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
 </script>
+
 </html>

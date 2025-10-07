@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resturaunt|Menu</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+<meta name="description" content="Welcome to our restaurant – serving fresh and delicious meals with love.">
+<meta name="keywords" content="restaurant, food, dinner, menu, best food">
+
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Family&display=swap" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
@@ -145,6 +149,7 @@
         }
 
          .contact{
+            margin-top: 130px;
             display: flex;
             flex-direction: column;
             background-color: black;
@@ -177,31 +182,6 @@
             font-weight: bolder;
         }
 
-        /* /* .contact{ */
-            /* display: flex; */
-            /* flex-direction: column; */
-            /* background-color: gray; 
-            height: 300px;
-            border-top: 2px solid black;
-        }
-        .left{
-            width: 50%;
-            border-right: 2px solid black;
-            padding-left: 10px;
-        }
-        .right{
-            padding-left: 10px;
-        }
-        .contact h1{
-            font-size: 50px;
-        }
-
-        footer{
-            display: flex;
-            justify-content: center;
-            color: black;
-            font-weight: bolder;
-        } */
 
 
 
@@ -252,6 +232,9 @@
             opacity: 1;
             height: 500px;
             pointer-events: auto;
+        }
+        .navbar a{
+            font-size: 40px;
         }
         }
 
@@ -428,75 +411,14 @@ hamb.addEventListener("click",()=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        // let index=0
-        // let dishes=document.querySelectorAll(".dish")
-        // let invisible=document.getElementById("starterinvisibleid")
-        // let visiblestarter=document.getElementById("startervisibleid")
-        // let instarter=document.querySelectorAll(".starterinvisibles")
-        // let closebtn=document.getElementById("closeid")
-        // visiblestarter.onclick=()=>invisible.style.display="flex"
-        // closebtn.onclick=()=>invisible.style.display="none"
-
-        // function showdish(di,index) {
-        //     di.forEach(d=>d.classList.remove("active"))
-        //     di[index].classList.add("active")
-        // }
-        
-        // showdish(dishes,index)
-        // function showdish(index) {
-        //     dishes.forEach(d=>d.classList.remove("active"))
-        //     dishes[index].classList.add("active")
-        // }
-        
-        // document.getElementById("nextid").onclick=()=>{
-        //     index=(index+1)%dishes.length
-        //     showdish(index)
-        // }
-        
-        // document.getElementById("previousid").onclick = () => {
-        //     index = (index - 1 + dishes.length) % dishes.length;
-        //     showdish(index);
-        // };
-
-
-        // let invisibleapetizer=document.getElementById("apetizersinvisibleid")
-        // let visibleapetizer=document.getElementById("apetizersvisibleid")
-        // let closeb=document.getElementById("closebid")
-        // let dishes2=document.querySelectorAll(".disha")
-        // visibleapetizer.onclick=()=>{invisibleapetizer.style.display="flex"}
-
-        // closeb.onclick=()=>{invisibleapetizer.style.display="none"}
-        // closeb.onclick=()=>{alert("hello")}
-
-        // function showDish(index) {
-        //     dishes2.forEach(d=>d.classList.remove("active"))
-        //     dishes2[index].classList.add("active")
-        // }
-        // showdish(dishes2,index)
-        
-        // document.getElementById("nextaid").onclick=()=>{
-        //     index=(index+1)%dishes2.length
-        //     showDish(index)
-        // }
-        
-        // document.getElementById("previousaid").onclick = () => {
-        //     index = (index - 1 + dishes2.length) % dishes2.length;
-        //     showDish(index);
-        // };
-
-
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
       
         </script>
 </html>
