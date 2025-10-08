@@ -17,8 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+     
+
         body {
-            min-width: 100vh;
+            /* padding-top: 80px; */
+            margin-top: 0px;
+            min-width: 100vw;
             min-height: 100vh;
             overflow-x: hidden;
             margin: 0px;
@@ -33,9 +37,20 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
+            /* margin-top: 200px; */
             height: 600px;
             object-fit: cover;
 
+        }
+        .herosection{
+            padding-top: 20px;
+        }
+
+        nav {
+            top: 0;
+            background: black;
+            width: 100%;
+            position: fixed;
         }
 
         .navbar {
@@ -75,7 +90,7 @@
             /* justify-content: center; */
             align-items: center;
             color: white;
-            margin-top: 120px;
+            padding-top: 120px;
         }
 
         .heading1 {
@@ -308,14 +323,15 @@
                 transition: height 2s ease-in-out;
                 pointer-events: none;
             }
-            
+
             .navbar.show {
                 /* font-size: 40px; */
                 height: 500px;
                 opacity: 1;
                 pointer-events: auto;
             }
-            .navbar a{
+
+            .navbar a {
                 font-size: 40px;
                 font-weight: bolder;
                 color: #f97316;
@@ -325,18 +341,17 @@
 </head>
 
 <body>
-    <section class="herosections">
-        <header>
-            <div class="hamburger" id="hamburgerid">
-                <div class="ham 1"></div>
-                <div class="ham 2"></div>
-                <div class="ham 3"></div>
-            </div>
-
+    <header>
+        <div class="hamburger" id="hamburgerid">
+            <div class="ham ham1"></div>
+            <div class="ham ham2"></div>
+            <div class="ham ham3"></div>
+        </div>
+        <nav>
             <section class="navsection">
 
             </section>
-            <nav class="navbar" id="navbarid">
+            <section class="navbar" id="navbarid">
                 <a href="index.html">Home</a>
                 <a href="menu.html">Menu</a>
                 <a href="about.html">About</a>
@@ -344,14 +359,16 @@
                 <a href="">Location</a>
                 <a href="gallery.html">Gallery</a>
 
-            </nav>
-        </header>
-        <main class="herosection">
+            </section>
+        </nav>
+    </header>
+    <main class="herosections">
+        <section class="herosection">
             <h1 class="heading1">We are ready to get your order</h1>
             <p class="heropara">Here offers a GREAT taste</p>
             <button class="cta" id="ctaid">Menu</button>
-        </main>
-    </section>
+        </section>
+    </main>
 
     <section class="specials">
         <h1 class="specialh1">OUR SPECIALITIES</h1>
@@ -412,13 +429,13 @@
 
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
-  });
-});
 
 </script>
 
