@@ -2,441 +2,1200 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resturaunt |Main</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant | Main</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <meta name="description" content="Welcome to our restaurant – serving fresh and delicious meals with love.">
+  <meta name="keywords" content="restaurant, food, dinner, menu, best food">
 
-    <link rel="icon" href="images/logo.png" type="image/png">
-    <meta name="description" content="Welcome to our restaurant – serving fresh and delicious meals with love.">
-    <meta name="keywords" content="restaurant, food, dinner, menu, best food">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Lora', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ===== Navbar ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10000;
+      background: black;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 50px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    nav a {
+      color: white;
+      font-size: 25px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f97316;
+    }
+
+    /* ===== Hamburger (mobile) ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      position: absolute;
+      left: 20px;
+      top: 25px;
+    }
+
+    .ham {
+      width: 40px;
+      height: 5px;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    /* ===== Hero Section ===== */
+    .herosections {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slides {
+      position: relative;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1.2s ease, transform 6s ease;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 1;
+    }
+
+    .slide h1,
+    .slide p,
+    .slide button {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .slide.active h1 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.3s;
+      font-size: 80px;
+    }
+
+    .slide.active p {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.6s;
+      font-size: 40px;
+    }
+
+    .slide.active button {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.9s;
+      padding: 20px 50px;
+      font-size: 30px;
+      border-radius: 40px;
+      border: 2px solid white;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slide.active button:hover {
+      color: #f97316;
+      background-color: white;
+    }
+
+    /* Prev/Next Buttons */
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 2;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background: rgba(255, 255, 255, 0.8);
+      color: black;
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    /* ===== Specials ===== */
+    .specials {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .specialh1 {
+      font-size: 80px;
+      margin-bottom: 50px;
+    }
+
+    .specialdishes {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(3, 370px);
+      grid-template-rows: repeat(2, 470px);
+      gap: 20px;
+    }
+
+    .specialdishes img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .specialdishes p {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* ===== Contact ===== */
+   
+.contact-section {
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #000, #0c0c0c);
+  display: flex;
+  justify-content: center;
+}
+
+.contact-card {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  padding: 60px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+}
+
+.contact-left h2 {
+  font-size: 48px;
+  color: #f97316;
+  margin-bottom: 30px;
+}
+
+.contact-left p {
+  color: #e5e5e5;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.contact-left a {
+  color: #f97316;
+  text-decoration: none;
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(249,115,22,0.08);
+  border-radius: 25px;
+  padding: 40px;
+  text-align: center;
+}
+
+.contact-right h3 {
+  font-size: 32px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.contact-right p {
+  color: #d1d1d1;
+  margin-bottom: 30px;
+}
+
+.contact-btn {
+  display: inline-block;
+  padding: 18px 40px;
+  border-radius: 40px;
+  background: #f97316;
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(249,115,22,0.5);
+}
 
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Dancing+Family&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    footer {
+      display: flex;
+      justify-content: center;
+      background-color: black;
+      color: white;
+      padding: 20px 0;
+      font-weight: bold;
+    }
+/* ===== OUR SPECIALITIES – PREMIUM STACK ===== */
 
-    <style>
-     
+.specials {
+  padding:120px 0;
+  background:#000;
+  text-align:center;
+}
 
-        body {
-            /* padding-top: 80px; */
-            margin-top: 0px;
-            min-width: 100vw;
-            min-height: 100vh;
-            overflow-x: hidden;
-            margin: 0px;
-            font-family: 'Poppins', 'Lora', 'Dancing Family', 'Arial Narrow', Arial, sans-serif;
-        }
+.specialh1 {
+  font-size:70px;
+  color:white;
+  margin-bottom:80px;
+}
 
-        .herosections {
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url("WhatsApp Image 2025-09-19 at 8.59.42 PM.jpeg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            /* margin-top: 200px; */
-            height: 600px;
-            object-fit: cover;
+/* Wrapper */
+.stack-wrapper {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
 
-        }
-        .herosection{
-            padding-top: 20px;
-        }
+/* Card Base */
+.stack-card {
+  width:320px;
+  height:440px;
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  transition:all 0.6s ease;
+  box-shadow:0 30px 60px rgba(0,0,0,0.6);
+  background:#111;
+}
 
-        nav {
-            top: 0;
-            background: black;
-            width: 100%;
-            position: fixed;
-        }
+/* Images */
+.stack-card img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-        .navbar {
-            display: flex;
-            /* flex-direction: column; */
-            justify-content: flex-end;
-            gap: 50px;
-            padding-top: 20px;
-            padding-right: 60px;
-            /* position: fixed; */
-        }
+/* Overlap Effect (20–25%) */
+.stack-card:nth-child(1) {
+  transform:translateX(80px) translateY(40px) scale(0.95);
+  z-index:1;
+}
 
-        .navsection {
-            height: 40px;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
+.stack-card:nth-child(2) {
+  transform:translateY(0) scale(1);
+  z-index:3;
+}
 
-        a {
-            color: white;
-            font-size: 25px;
-            text-decoration: none;
-        }
+.stack-card:nth-child(3) {
+  transform:translateX(-80px) translateY(40px) scale(0.95);
+  z-index:1;
+}
 
-        a:hover {
-            color: #f97316;
-        }
+/* Info Panel */
+.card-info {
+  position:absolute;
+  bottom:-140px;
+  left:0;
+  width:100%;
+  padding:25px;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+  transition:0.5s ease;
+}
 
-        a:active {
-            color: #f97316;
-            text-decoration: dotted;
-        }
+.card-info h2 {
+  font-size:26px;
+  color:#f97316;
+  margin-bottom:10px;
+}
 
-        main {
-            display: block;
-            text-align: center;
-            /* flex-direction: column; */
-            /* justify-content: center; */
-            align-items: center;
-            color: white;
-            padding-top: 120px;
-        }
+.card-info p {
+  font-size:16px;
+  color:#ccc;
+}
 
-        .heading1 {
-            font-size: 80px;
-            /* margin: 0px; */
-        }
+/* Active Card */
+.stack-card.active {
+  transform:translateY(-40px) scale(1.08) !important;
+  z-index:10;
+  box-shadow:0 40px 90px rgba(249,115,22,0.4);
+}
 
-        .heropara {
-            /* padding: 0px; */
-            font-size: 40px;
-        }
+.stack-card.active .card-info {
+  bottom:0;
+}
 
-        .cta {
-            /* padding: 20px; */
-            width: 180px;
-            height: 60px;
-            border-radius: 40px;
-            background-color: transparent;
-            border: 2px solid white;
-            color: white;
-            font-size: 30px;
-            /* color: transparent; */
-        }
-
-        .cta:hover {
-            color: #f97316;
-            background-color: wheat;
-        }
-
-        .specials {
-            /* height: 500px; */
-            padding-top: 100px;
-            margin: 20px;
-            text-align: center;
-        }
-
-        .specialdishes {
-            display: grid;
-            justify-content: center;
-            grid-template-columns: repeat(3, 370px);
-            grid-template-rows: repeat(2, 470px);
-        }
-
-        .specialdishes img {
-            /* grid-column: 1; */
-            /* grid-row: 1; */
-            width: 330px;
-            height: 370px;
-        }
-
-        .dish2 {
-            grid-column: 1;
-            grid-row: 2;
-        }
-
-        .specialh1 {
-            font-size: 80px;
-        }
-
-        .specialdishes p {
-            font-size: 20px;
-            font-weight: bolder;
-        }
-
-        .contact {
-            margin-top: 100px;
-            display: flex;
-            flex-direction: column;
-            background-color: black;
-            height: 500px;
-            border-top: 2px solid black;
-            align-items: center;
-        }
-
-        .left {
-
-            height: 50%;
-
-        }
-
-        .right {
-            height: 50%;
-        }
-
-        .contact h1 {
-            color: #f97316;
-            font-size: 40px;
-        }
-
-        .contact p {
-            color: white;
-            font-size: 20px;
-        }
-
-        footer {
-            display: flex;
-            justify-content: center;
-            color: white;
-            background-color: black;
-            font-weight: bolder;
-        }
-
-        .hamburger {
-            margin-right: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            display: none;
-        }
-
-        .ham {
-
-            width: 50px;
-            height: 5px;
-            background-color: white;
-            border-radius: 20px;
-            /* margin-left: auto; */
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        @media only screen and (max-width:1106px) {
-            .specialdishes {
-                /* display: block; */
-                justify-content: center;
-                grid-template-columns: repeat(2, 50%);
-                grid-template-rows: repeat(3, 520px);
-            }
-
-            .specialdishes img {
-                /* width: 500px; */
-                width: 90%;
-                height: 80%;
-            }
-
-            .specialdishes p {
-                font-size: 30px;
-                font-weight: bolder;
-            }
-        }
-
-        @media only screen and (max-width:1145px) {
-            .heading1 {
-                font-size: 70px;
-            }
-        }
-
-        @media only screen and (max-width:1010px) {
-            .heading1 {
-                font-size: 60px;
-            }
-        }
+/* Hover polish */
+.stack-card:hover {
+  filter:brightness(1.1);
+}
 
 
-        @media only screen and (max-width:500px) {
-            body {
-                overflow-x: hidden;
-            }
 
-            .ham {
-                width: 100px;
-                height: 13px;
-            }
+.about-premium {
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #0b0b0b, #000);
+  color: white;
+  text-align: center;
+}
 
-            .cta {
-                height: 185px;
-                width: 400px;
-                border-radius: 100px;
-                font-size: 80px;
-                border: 8px solid white;
-            }
+.about-header h2 {
+  font-size: 64px;
+  color: #f97316;
+}
 
-            .heading1 {
-                font-size: 80px;
-            }
+.about-header p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 20px;
+  color: #d1d1d1;
+  line-height: 1.7;
+}
 
-            .heropara {
-                font-size: 60px;
-            }
+.about-story {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin-inline: auto;
+}
 
-            .herosections {
-                height: 1000px;
-            }
+.about-text h3 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
 
-            .specialdishes {
-                display: block;
-            }
+.about-text p {
+  font-size: 18px;
+  color: #cfcfcf;
+  line-height: 1.8;
+}
 
-            .specialdishes img {
-                height: 700px;
-            }
+.about-image img {
+  width: 100%;
+  border-radius: 30px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+}
 
-            .specialdishes p {
-                font-size: 80px;
-            }
+/* cards */
+.about-cards {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin-inline: auto;
+}
 
-            .contact p {
-                font-size: 30px;
-            }
-        }
+.about-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  padding: 40px 30px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-        @media only screen and (max-width:850px) {
-            .hamburger {
-                display: flex;
-                flex-direction: column;
-                gap: 2px;
-                padding-top: 20px;
-                padding-left: 10px;
-            }
+.about-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
 
-            .navsection {
-                display: none;
-            }
+.about-card h4 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #f97316;
+}
 
-            header {
-                height: 0px;
-            }
+.about-card p {
+  font-size: 16px;
+  color: #d6d6d6;
+  line-height: 1.7;
+}
 
-            .navbar {
-                flex-direction: column;
-                height: 0px;
-                padding-left: 10px;
-                overflow: hidden;
-                opacity: 0;
-                /* background-color: black; */
-                transition: height 2s ease-in-out;
-                pointer-events: none;
-            }
+/* counter fix */
+.counter-box {
+  margin-top: auto;
+  padding-top: 25px;
+  text-align: center;
+}
 
-            .navbar.show {
-                /* font-size: 40px; */
-                height: 500px;
-                opacity: 1;
-                pointer-events: auto;
-            }
+.counter {
+  font-size: 42px;
+  font-weight: 700;
+  color: #f97316;
+}
 
-            .navbar a {
-                font-size: 40px;
-                font-weight: bolder;
-                color: #f97316;
-            }
-        }
-    </style>
+.plus {
+  font-size: 28px;
+  color: #f97316;
+}
+
+.label {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #cfcfcf;
+}
+
+.about-quote {
+  margin-top: 100px;
+  font-size: 28px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .about-story {
+    grid-template-columns: 1fr;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-header h2 {
+    font-size: 42px;
+  }
+}
+
+
+/* Mobile Responsive */
+@media(max-width:900px){
+  .stack-wrapper{
+    flex-direction:column;
+    gap:40px;
+  }
+
+  .stack-card{
+    transform:none !important;
+  }
+  .contact-card {
+    grid-template-columns: 1fr;
+    padding: 40px;
+  }
+  
+  .contact-left h2 {
+    font-size: 36px;
+  }
+
+  .about-header h2 {
+    font-size: 44px;
+  }
+
+  .about-story {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-quote {
+    font-size: 22px;
+  }
+
+}
+/* ===== 3D TILT EFFECT ===== */
+.stack-card {
+  perspective: 1000px;
+}
+
+.stack-card {
+  transform-style: preserve-3d;
+}
+
+/* smoother motion */
+.stack-card {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.7s ease;
+}
+
+
+/* ===== GALLERY ===== */
+.gallery-premium {
+  padding: 140px 20px;
+  background: #000;
+  text-align: center;
+}
+
+.section-head span {
+  color: #f97316;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+.section-head h2 {
+  font-size: 60px;
+  color: white;
+  margin: 20px 0 80px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.gallery-card img {
+  height: 380px;
+  object-fit: cover;
+}
+
+.gallery-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 40px 90px rgba(0,0,0,.7);
+}
+
+.gallery-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.gallery-card:hover .overlay {
+  opacity: 1;
+}
+
+/* ===== MODAL ===== */
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.gallery-modal img {
+  width: 70%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.close-modal {
+  position: fixed;
+  top: 25px;
+  right: 35px;
+  font-size: 55px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10000;
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+  padding: 5px 15px;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  color: #f97316;
+  transform: scale(1.1);
+}
+
+
+.modal-controls {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  gap: 40px;
+}
+
+.modal-controls button {
+  font-size: 30px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media(max-width:900px){
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-modal img {
+    width: 90%;
+  }
+}
+
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1106px) {
+      .specialdishes {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        padding: 20px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      nav a {
+        display: none;
+      }
+
+      nav.show a {
+        display: block;
+        margin: 15px 0;
+        font-size: 30px;
+        color: #f97316;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .slide.active h1 {
+        font-size: 50px;
+      }
+
+      .slide.active p {
+        font-size: 30px;
+      }
+
+      .slide.active button {
+        font-size: 25px;
+        padding: 15px 30px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <div class="hamburger" id="hamburgerid">
-            <div class="ham ham1"></div>
-            <div class="ham ham2"></div>
-            <div class="ham ham3"></div>
-        </div>
-        <nav>
-            <section class="navsection">
 
-            </section>
-            <section class="navbar" id="navbarid">
-                <a href="index.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="about.html">About</a>
-                <!-- <a href="">Order Now</div> -->
-                <a href="">Location</a>
-                <a href="gallery.html">Gallery</a>
+  <header>
+    <div class="hamburger" id="hamburgerid">
+      <div class="ham"></div>
+      <div class="ham"></div>
+      <div class="ham"></div>
+    </div>
+    <nav id="navbarid">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="#about">About</a>
+      <a href="">Location</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+  </header>
 
-            </section>
-        </nav>
-    </header>
-    <main class="herosections">
-        <section class="herosection">
-            <h1 class="heading1">We are ready to get your order</h1>
-            <p class="heropara">Here offers a GREAT taste</p>
-            <button class="cta" id="ctaid">Menu</button>
-        </section>
-    </main>
+  <!-- ===== Hero Section ===== -->
+  <main class="herosections">
+    <section class="slides">
+      <section class="slide active" style="background-image:url('dessert-min.jpeg')">
+        <h1>We are ready to get your order</h1>
+        <p>Here offers a GREAT taste</p>
+        <button class="cta">Menu</button>
+      </section>
 
-    <section class="specials">
-        <h1 class="specialh1">OUR SPECIALITIES</h1>
+      <section class="slide" style="background-image:url('karahi.jpg')">
+        <h1>Fresh & Delicious Food</h1>
+        <p>Made with love</p>
+        <button class="cta">Order Now</button>
+      </section>
 
-        <section class="specialdishes">
-            <div class="dish1"><img src="WhatsApp Image 2025-09-19 at 8.59.44 PM.jpeg" alt="image 1">
-                <p>Pizzas</p>
-            </div>
-            <div class="dish2"><img src="eggs.jpeg" alt="image 2">
-                <p>Eggs</p>
-            </div>
-            <div class="dish3"><img src="dessert.jpeg" alt="image 3">
-                <p>Desserts</p>
-            </div>
-            <div class="dish4"><img src="desi.jpeg" alt="image 4">
-                <p>Desi Food</p>
-            </div>
-            <div class="dish5"><img src="salads.jpeg" alt="image 5">
-                <p>Salads</p>
-            </div>
-        </section>
+      <section class="slide" style="background-image:url('slush.jpg')">
+        <h1>Fast Delivery</h1>
+        <p>Hot & tasty meals</p>
+        <button class="cta">Explore</button>
+      </section>
     </section>
 
-    <section class="contact">
-        <div class="left">
-            <h1>Contact us</h1>
-            <p>Mon - Fri : 08:00am - 10:00pm </p>
-            <p>Email : umamaishaq@gmail.com</p>
-        </div>
+    <button class="prev">❮</button>
+    <button class="next">❯</button>
+  </main>
 
-        <div class="right">
-            <h1>Follow us</h1>
-            <!-- <a href="www.instagram.com">    <i>insta</i></a> -->
-        </div>
+  <!-- ===== Specials ===== -->
+  <!-- <section class="specials">
+    <h1 class="specialh1">OUR SPECIALITIES</h1>
+    <section class="specialdishes">
+      <div><img src="WhatsApp Image 2025-09-19 at 8.59.44 PM.jpeg" alt=""><p>Pizzas</p></div>
+      <div><img src="eggs.jpeg" alt=""><p>Eggs</p></div>
+      <div><img src="dessert.jpeg" alt=""><p>Desserts</p></div>
+      <div><img src="desi.jpeg" alt=""><p>Desi Food</p></div>
+      <div><img src="salads.jpeg" alt=""><p>Salads</p></div>
     </section>
+  </section> -->
 
-    <footer>umama@copyright2025</footer>
-</body>
+  <section class="specials">
+  <h1 class="specialh1">OUR SPECIALITIES</h1>
 
-<script>
+  <div class="stack-wrapper">
+
+    <div class="stack-card active">
+      <img src="slush.jpg" alt="Pizza">
+      <div class="card-info">
+        <h2>Slushes</h2>
+        <p>Stone baked pizza with premium cheese & fresh toppings.</p>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <img src="karahi.jpg" alt="Burger">
+      <div class="card-info">
+        <h2>Karahi</h2>
+        <p>Juicy karahi with soft buns & signature sauces.</p>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <img src="dessert.jpeg" alt="Dessert">
+      <div class="card-info">
+        <h2>Desserts</h2>
+        <p>Sweet desserts crafted for perfect after-meal moments.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
-    let ham = document.getElementById("hamburgerid")
-    let nav = document.getElementById("navbarid")
-    ham.addEventListener("click", () => {
-        nav.classList.toggle("show")
 
-    })
+<section class="about-premium" id="about">
+
+  <div class="about-header reveal">
+    <h2>About Us</h2>
+    <p>
+      We don’t just serve food — we create moments, flavors, and experiences
+      that stay with you.
+    </p>
+  </div>
+
+  <div class="about-story reveal">
+    <div class="about-text">
+      <h3>Our Story</h3>
+      <p>
+        Born from passion and perfected with love, our restaurant brings
+        together tradition, taste, and creativity. Every dish is carefully
+        crafted to give you comfort, quality, and unforgettable flavor.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="desi.jpeg" alt="Our Story">
+    </div>
+  </div>
+
+  <div class="about-cards">
+
+    <div class="about-card reveal">
+      <h4>🍽 Our Mission</h4>
+      <p>
+        To serve fresh, high-quality food that feels like home and tastes
+        extraordinary.
+      </p>
+
+      <div class="counter-box">
+        <span class="counter" data-target="20">0</span><span class="plus">+</span>
+        <span class="label">Dishes</span>
+      </div>
+    </div>
+
+    <div class="about-card reveal">
+      <h4>⭐ Quality First</h4>
+      <p>
+        We use carefully selected ingredients to ensure consistency, hygiene,
+        and exceptional taste.
+      </p>
+
+      <div class="counter-box">
+        <span class="counter" data-target="2500">0</span><span class="plus">+</span>
+        <span class="label">Happy Customers</span>
+      </div>
+    </div>
+
+    <div class="about-card reveal">
+      <h4>❤️ Experience</h4>
+      <p>
+        From the first bite to the last smile — your satisfaction is our
+        priority.
+      </p>
+
+      <div class="counter-box">
+        <span class="counter" data-target="10">0</span><span class="plus">+</span>
+        <span class="label">Years Experience</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="about-quote reveal">
+    “Great food is the foundation of genuine happiness.”
+  </div>
+
+</section>
 
 
-    let button = document.getElementById("ctaid")
-    button.addEventListener("click", () => {
-        window.location.href = "menu.html"
-    })
+
+  <!-- ===== Contact ===== -->
+  <!-- <section class="contact">
+    <h1>Contact Us</h1>
+    <p>Mon - Fri : 08:00am - 10:00pm</p>
+    <p>Email : umamaishaq@gmail.com</p>
+  </section> -->
 
 
+  
+  
+  <!-- ===== GALLERY SECTION ===== -->
+  <section class="gallery-premium" id="gallery">
+    
+    <div class="section-head">
+      <span>OUR MOMENTS</span>
+    <h2>Gallery</h2>
+  </div>
 
+  <div class="gallery-grid">
 
+    <div class="gallery-card" data-gallery="food">
+      <img src="dessert.jpeg" alt="">
+      <div class="overlay">Our Food</div>
+    </div>
+    
+    <div class="gallery-card" data-gallery="building">
+      <img src="build.jpg" alt="">
+      <div class="overlay">Our Place</div>
+    </div>
+    
+    <div class="gallery-card" data-gallery="drinks">
+      <img src="slush.jpg" alt="">
+      <div class="overlay">Drinks</div>
+    </div>
+    
+  </div>
+</section>
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+<!-- ===== GALLERY MODAL ===== -->
+<div class="gallery-modal" id="galleryModal">
+  <span class="close-modal">&times;</span>
+  <img id="modalImg" src="">
+  <div class="modal-controls">
+    <button id="prevImg">❮</button>
+    <button id="nextImg">❯</button>
+  </div>
+</div>
+
+<section class="contact-section">
+<div class="contact-card">
+
+  <div class="contact-left">
+    <h2>Contact Us</h2>
+
+    <p>📍 <strong>Location</strong><br>Karachi, Pakistan</p>
+
+    <p>⏰ <strong>Opening Hours</strong><br>
+      Mon – Fri: 08:00 AM – 10:00 PM
+    </p>
+
+    <p>📧 <strong>Email</strong><br>
+      <a href="mailto:umamaishaq@gmail.com">umamaishaq@gmail.com</a>
+    </p>
+  </div>
+
+  <div class="contact-right">
+    <h3>Let’s Talk</h3>
+    <p>Have a question or want to order?</p>
+
+    <a href="https://wa.me/923000000000" class="contact-btn">
+      Chat on WhatsApp
+    </a>
+  </div>
+
+</div>
+</section>
+
+  <footer>umama@copyright2025</footer>
+
+  <script>
+
+    const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+  counter.innerText = '0';
+
+  const updateCounter = () => {
+    const target = +counter.getAttribute('data-target');
+    const current = +counter.innerText;
+    const increment = Math.ceil(target / 100);
+
+    if (current < target) {
+      counter.innerText = current + increment;
+      setTimeout(updateCounter, 30);
+    } else {
+      counter.innerText = target + '+';
+    }
+  };
+
+  updateCounter();
+});
+
+    // ===== Navbar Scroll =====
+    const navEl = document.querySelector("nav");
+    function handleNavbar() {
+      if (window.scrollY > 80) {
+        navEl.classList.add("scrolled");
+      } else {
+        navEl.classList.remove("scrolled");
+      }
+    }
+    window.addEventListener("load", handleNavbar);
+    window.addEventListener("scroll", handleNavbar);
+
+    // ===== Hamburger =====
+    const hamburger = document.getElementById("hamburgerid");
+    hamburger.addEventListener("click", () => {
+      navEl.classList.toggle("show");
     });
 
-</script>
+    // ===== Carousel =====
+    const slides = document.querySelectorAll(".slide");
+    const next = document.querySelector(".next");
+    const prev = document.querySelector(".prev");
+    let index = 0;
 
+    function showSlide(i) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[i].classList.add("active");
+    }
+
+    next.addEventListener("click", () => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    });
+
+    prev.addEventListener("click", () => {
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide(index);
+    });
+
+    setInterval(() => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }, 4000);
+
+    // ===== CTA Buttons =====
+    document.querySelectorAll(".cta").forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.location.href = "menu.html";
+      });
+    });
+
+
+const cards = document.querySelectorAll(".stack-card");
+
+/* Auto-focus middle card on load */
+window.addEventListener("load", () => {
+  cards.forEach(c => c.classList.remove("active"));
+  if(cards[1]) cards[1].classList.add("active");
+});
+
+/* Click = sirf highlight */
+cards.forEach(card => {
+
+  card.addEventListener("click", () => {
+    cards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+  });
+
+  /* 3D tilt effect */
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = ((y / rect.height) - 0.5) * -10;
+    const rotateY = ((x / rect.width) - 0.5) * 10;
+
+    card.style.transform = `
+      translateY(-40px)
+      scale(1.08)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+    `;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+  });
+
+});
+
+
+
+// about k liye 
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
+
+
+
+
+// gallery k liye 
+const galleryData = {
+  food: ["dessert.jpeg", "eggs.jpeg", "desi.jpeg"],
+  building: ["build.jpg", "build2.jpg", "build3.jpg"],
+  drinks: ["slush.jpg", "drink.jpg"]
+};
+
+const modal = document.getElementById("galleryModal");
+const modalImg = document.getElementById("modalImg");
+let currentImages = [];
+let currentIndex = 0;
+
+document.querySelectorAll(".gallery-card").forEach(card => {
+  card.addEventListener("click", () => {
+    currentImages = galleryData[card.dataset.gallery];
+    currentIndex = 0;
+    modalImg.src = currentImages[currentIndex];
+    modal.style.display = "flex";
+  });
+});
+
+document.querySelector(".close-modal").onclick = () => {
+  modal.style.display = "none";
+};
+
+document.getElementById("nextImg").onclick = () => {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  modalImg.src = currentImages[currentIndex];
+};
+
+document.getElementById("prevImg").onclick = () => {
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  modalImg.src = currentImages[currentIndex];
+};
+
+
+  </script>
+
+</body>
 </html>
